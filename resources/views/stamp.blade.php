@@ -84,11 +84,9 @@
       @csrf
       <input type="hidden" name="users_id" value={{$id}}>
       <input type="hidden" name="attended_day" value={{$attended_day}}>
-
-
       <button class=stamp-button>勤務開始</button>
     </form>
-    <form action="/stamp/rest" method="post">
+    <form action="" method="post">
       @csrf
       <button class=stamp-button>休憩開始</button>
     </form>
@@ -96,7 +94,10 @@
   <th class=stamp-th>
     <form action="/stamp/end" method="post">
       @csrf
-
+      <input type="hidden" name="users_id" value={{$id}}>
+      <!--勤務開始ボタンを押すと下記を作成
+      <input type="hidden" name="attended_id" value=$attended_id>
+      -->
       <button class=stamp-button>勤務終了</button>
     </form>
     <form action="" method="">

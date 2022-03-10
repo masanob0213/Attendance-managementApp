@@ -16,25 +16,28 @@ class StampController extends Controller
             $msg = '' . Auth::user()->name . '';
             $id = '' . Auth::user()->id . '';
             $attended_day = new Carbon();;
+            //$attended_id = Attendance::user()->id . '';
+            //→if(idがあるときは入力)else→null
         }
 
-        return view('stamp', ['message' => $msg, 'id' => $id, 'attended_day' => $attended_day,]);
+        return view('stamp', [
+            'message' => $msg, 'id' => $id, 'attended_day' => $attended_day,
+            //'attended_id' => $attended_id,
+        ]);
     }
 
     public function start(Request $request)
     {
-
         $form = $request->all();
         Attendance::create($form);
-
         return redirect('/stamp');
     }
 
     public function end(Request $request)
     {
-        $form = $request->all();
+        $form = $request->ended_at();
         unset($form['_token']);
-        Attendance::where('member_id', $request->member_id)->update($form);
+        Attendance::where('users_id', $request->users_id and 'attended_id', $request->attended_)->update($form);
         return redirect('/stamp');
     }
     public function rest(Request $request)
