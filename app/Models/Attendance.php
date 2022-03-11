@@ -9,7 +9,10 @@ class Attendance extends Model
 {
     use HasFactory;
     protected $fillable  = [
-        'users_id', 'attended_day', 'started_at', 'ended_at',
+        'users_id',
+        'attended_day',
+        'started_at',
+        'ended_at',
     ];
     public $timestamps = false;
 }

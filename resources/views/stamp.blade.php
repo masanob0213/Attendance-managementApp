@@ -95,9 +95,9 @@
     <form action="/stamp/end" method="post">
       @csrf
       <input type="hidden" name="users_id" value={{$id}}>
-      <!--勤務開始ボタンを押すと下記を作成
-      <input type="hidden" name="attended_id" value=$attended_id>
-      -->
+      <input type="hidden" name="attended_day" value={{$attended_day}}>
+      <!--勤務開始ボタンを押すと下記を作成-->
+      <input type="hidden" name="ended_at" value={{$ended_at}}>
       <button class=stamp-button>勤務終了</button>
     </form>
     <form action="" method="">

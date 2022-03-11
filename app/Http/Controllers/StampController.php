@@ -16,13 +16,15 @@ class StampController extends Controller
             $msg = '' . Auth::user()->name . '';
             $id = '' . Auth::user()->id . '';
             $attended_day = new Carbon();;
-            //$attended_id = Attendance::user()->id . '';
-            //→if(idがあるときは入力)else→null
+            //0時0分を取って来てるので要修正
+            $ended_at = Carbon::now();;
         }
 
         return view('stamp', [
-            'message' => $msg, 'id' => $id, 'attended_day' => $attended_day,
-            //'attended_id' => $attended_id,
+            'message' => $msg,
+            'id' => $id,
+            'attended_day' => $attended_day,
+            'ended_at' => $ended_at,
         ]);
     }
 
@@ -35,9 +37,9 @@ class StampController extends Controller
 
     public function end(Request $request)
     {
-        $form = $request->ended_at();
+        $form = $request->all();
         unset($form['_token']);
-        Attendance::where('users_id', $request->users_id and 'attended_id', $request->attended_)->update($form);
+        Attendance::where('users_id',  $request->users_id and 'attended_day', $request->attended_day)->update($form);
         return redirect('/stamp');
     }
     public function rest(Request $request)
