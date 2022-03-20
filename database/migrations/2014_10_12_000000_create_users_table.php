@@ -31,6 +31,9 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        //制約キーを設定しているため、子テーブルから削除していく
+        Schema::dropIfExists('rests');
+        Schema::dropIfExists('attendances');
         Schema::dropIfExists('users');
     }
 }

@@ -63,8 +63,7 @@
     </form>
   </th>
   <th class=link-th>
-    <form action="/date" method="">
-      @csrf
+    <form action="/data" method="get">
       <button class=header-button>日付一覧</button>
     </form>
   </th>
@@ -77,16 +76,25 @@
 </table>
 @endsection
 @section('card')
-<p class=stamp-text>{{$message}}さん、お疲れ様です。</p>
+<p class=stamp-text>{{$name}}さん　お疲れ様です</p>
+<p class=stamp-text>{{$message}}</p>
+@if ($errors->has('attended_day'))
+<tr>
+  <th>ERROR</th>
+  <td>
+    {{$errors->first('attended_day')}}
+  </td>
+</tr>
+@endif
 <table class=stamp-table>
   <th class=stamp-th>
     <form action="/stamp/start" method="post">
       @csrf
-      <input type="hidden" name="users_id" value={{$id}}>
-      <input type="hidden" name="attended_day" value={{$attended_day}}>
+      <!--<input type="hidden" name="users_id" value=$users_id>
+      <input type="hidden" name="attended_day" value=$attended_day>-->
       <button class=stamp-button>勤務開始</button>
     </form>
-    <form action="" method="post">
+    <form action="/stamp/rest" method="post">
       @csrf
       <button class=stamp-button>休憩開始</button>
     </form>
@@ -94,13 +102,9 @@
   <th class=stamp-th>
     <form action="/stamp/end" method="post">
       @csrf
-      <input type="hidden" name="users_id" value={{$id}}>
-      <input type="hidden" name="attended_day" value={{$attended_day}}>
-      <!--勤務開始ボタンを押すと下記を作成-->
-      <input type="hidden" name="ended_at" value={{$ended_at}}>
       <button class=stamp-button>勤務終了</button>
     </form>
-    <form action="" method="">
+    <form action="/stamp/resume" method="post">
       @csrf
       <button class=stamp-button>休憩終了</button>
     </form>

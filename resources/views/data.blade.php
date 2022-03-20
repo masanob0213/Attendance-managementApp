@@ -99,9 +99,9 @@
 
   @foreach ($items as $item)
   <tr>
-    <th>{{$value1}}</th>
-    <th>{{$value2}}</th>
-    <th>{{$value3}}</th>
+    <th>{{$name}}</th>
+    <th>{{$item->started_at}}</th>
+    <th>{{$item->ended_at}}</th>
     <th>{{$value4}}</th>
     <th>{{$value5}}</th>
   </tr>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StampController;
-use App\Http\Controllers\DateController;
+use App\Http\Controllers\DataController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
@@ -33,6 +33,9 @@ Route::post('/stamp/start', [StampController::class, 'start']);
 Route::post('/stamp/end', [StampController::class, 'end']);
 Route::post('/stamp/rest', [StampController::class, 'rest']);
 Route::post('/stamp/resume', [StampController::class, 'resume']);
+
+//日付一覧ページ
+Route::get('/data', [DataController::class, 'index']);
 
 
 

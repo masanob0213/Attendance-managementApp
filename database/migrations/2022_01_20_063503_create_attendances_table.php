@@ -20,7 +20,7 @@ class CreateAttendancesTable extends Migration
             $table->foreign('users_id')->references('id')->on('users');
             $table->date('attended_day');
             $table->timestamp('started_at')->useCurrent()->nullable();
-            $table->timestamp('ended_at')->useCurrent()->nullable();
+            $table->timestamp('ended_at')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });
@@ -33,6 +33,8 @@ class CreateAttendancesTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('rests');
         Schema::dropIfExists('attendances');
+        Schema::dropIfExists('users');
     }
 }
