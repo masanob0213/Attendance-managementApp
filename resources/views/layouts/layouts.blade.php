@@ -36,7 +36,7 @@
       background-color: #EEEEEE;
       height: 400px;
       margin-top: 0px;
-      /text-align: center;
+      text-align: center;
       padding-bottom: 30px;
     }
 

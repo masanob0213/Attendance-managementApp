@@ -15,13 +15,14 @@ class CreateRestsTable extends Migration
     {
         Schema::create('rests', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('user_id');
             /*外部キー設定*/
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
 
-            $table->date('attended_day');
-            $table->timestamp('started_at')->useCurrent()->nullable();
-            $table->timestamp('ended_at')->nullable();
+            $table->date('rest_attended_day');
+            $table->timestamp('rest_started_at')->useCurrent()->nullable();
+            $table->timestamp('rest_ended_at')->nullable();
+            $table->timestamp('total_at')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
         });

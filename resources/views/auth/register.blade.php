@@ -1,66 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style>
+    .form_register {
+        padding-top: 20px;
+    }
+
+    .title_register {
+        font-size: 20px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    tr {
+        text-align: center;
+    }
+
+    input {
+        width: 50%;
+        background-color: #EEEEEE;
+        color: #747474;
+        padding: 10px;
+        font-size: 12px;
+        margin: 5px;
+        border-radius: 5px;
+        border: 2px solid gray;
+
+    }
+
+    .register_button {
+        width: 53%;
+        background-color: blue;
+        border-radius: 5px;
+        font-weight: bold;
+        padding: 10px;
+        color: white;
+        border: 2px solid blue;
+        background-color: blue;
+    }
+
+    .login-button {
+        text-decoration: none;
+        color: blue;
+    }
+</style>
+
 @extends('layouts.layouts')
 @section('card')
-
-<!-- <x-guest-layout>
-<!-- <x-auth-card>-->
-<!-- <x-slot name="logo">-->
-<!-- <a href="/">
-            <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-        </a>-->
-<!--</x-slot> -->
-
-<!-- Validation Errors -->
-<x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-<form method="POST" action="{{ route('register') }}">
-    @csrf
-
-    <!-- Name -->
-    <div>
-        <x-label for="name" :value="__('Name')" />
-
-        <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-    </div>
-
-    <!-- Email Address -->
-    <div class="mt-4">
-        <x-label for="email" :value="__('Email')" />
-
-        <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-    </div>
-
-    <!-- Password -->
-    <div class="mt-4">
-        <x-label for="password" :value="__('Password')" />
-
-        <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-    </div>
-
-    <!-- Confirm Password -->
-    <div class="mt-4">
-        <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-        <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
-    </div>
-
-    <div class="flex items-center justify-end mt-4">
-        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-            {{ __('Already registered?') }}
-        </a>
-
-        <x-button class="ml-4">
-            {{ __('Register') }}
-        </x-button>
-    </div>
-</form>
-<div class=login>
-    <p class=login-text>アカウントをお持ちの方はこちら</p>
-    <form action="/login" method="get">
-        <button class=login-button>ログイン</button>
+<div class=form_register>
+    <form method="POST" action="/register">
+        @csrf
+        <h1 class=title_register>会員登録</h1>
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <!-- Name -->
+        <table>
+            <tr>
+                <td>
+                    <!-- Name --><input id="name" type="text" name="name" required autofocus />
+                </td>
+            </tr>
+            <tr>
+                <td><input id="email" type="email" name="email" required /></td>
+            </tr>
+            <tr>
+                <td><input id="password" type="password" name="password" required autocomplete="new-password" /></td>
+            </tr>
+            <tr>
+                <td><input id="password_confirmation" type="password" name="password_confirmation" required /></td>
+            </tr>
+            <tr>
+                <td>
+                    <button class=register_button>会員登録</button>
+                </td>
+            </tr>
+        </table>
     </form>
+    <div class=login>
+        <p class=login-text>アカウントをお持ちの方はこちらから</p><a href="/login" class=login-button>ログイン</a>
+    </div>
 </div>
-<!--</x-auth-card>
-</x-guest-layout> -->
-
 
 @endsection
+
+</html>

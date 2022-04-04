@@ -9,6 +9,9 @@ class Rest extends Model
 {
     use HasFactory;
     protected $fillable  = [
-        'users_id', 'attended_day', 'started_at', 'ended_at',
+        'user_id',
+        'rest_attended_day',
+        'rest_started_at',
+        'rest_ended_at',
     ];
 }

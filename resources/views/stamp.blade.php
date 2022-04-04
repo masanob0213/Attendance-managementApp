@@ -76,7 +76,7 @@
 </table>
 @endsection
 @section('card')
-<p class=stamp-text>{{$name}}さん　お疲れ様です</p>
+<p class=stamp-text>{{$name}}さんお疲れ様です!</p>
 <p class=stamp-text>{{$message}}</p>
 @if ($errors->has('attended_day'))
 <tr>

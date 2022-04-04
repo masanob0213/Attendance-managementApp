@@ -79,7 +79,7 @@
 </table>
 @endsection
 @section('card')
-<p class=day-text>2021-11-01</p>
+<p class=day-text>{{$attended_day->toDateString();}}</p>
 <table class=date-table>
   <tr class=contents-tr>
     <th class=contents-th>名前</th>
@@ -97,17 +97,18 @@
   $value5 = '08:00:00';
   @endphp
 
-  @foreach ($items as $item)
+  @foreach ($attendances as $attendance)
   <tr>
-    <th>{{$name}}</th>
-    <th>{{$item->started_at}}</th>
-    <th>{{$item->ended_at}}</th>
-    <th>{{$value4}}</th>
-    <th>{{$value5}}</th>
+    <!--attendances→users_id
+      →Auth->users_idとidを一致->名前取得-->
+    <td>{{$attendance->name}}</td>
+    <td>{{$attendance->started_at->format('H:i:s')}}</td>
+    <td>{{$attendance->ended_at->format('H:i:s')}}</td>
+    <td>{{$attendance->rest_started_at}}</td>
+    <td>{{$value5}}</td>
   </tr>
   @endforeach
 </table>
-{{ $items->links() }}
 
 @endsection
 
